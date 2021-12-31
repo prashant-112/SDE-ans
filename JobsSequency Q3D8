@@ -1,0 +1,30 @@
+    vector<int> JobScheduling(Job arr[], int n) 
+    { 
+        vector<pair<int,int>> v;
+        for(int i=0; i<n; i++){
+            v.push_back({arr[i].profit,arr[i].dead});
+        }
+        sort(v.rbegin(),v.rend()); //sorting in descending oreder
+        int maxd = INT_MIN;
+        
+        for(int i=0;i<n;i++){//finding maximum deadline
+            maxd = max(maxd,v[i].second);
+        }
+        int slot[maxd+1]; //create array of maximum deadline
+        for(int i=0;i<=maxd;i++){
+            slot[i] = -1;
+        }
+        
+        int jobdone=0,jobprofit=0;
+        for(int i=0;i<n;i++){
+            for(int j=v[i].second;j>0;j--){
+                if(slot[j]==-1){
+                    slot[j] = i;
+                    jobdone++;
+                    jobprofit += v[i].first;
+                    break;
+                }
+            }
+        }
+        return {jobdone,jobprofit};
+    } 

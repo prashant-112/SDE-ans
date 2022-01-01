@@ -1,0 +1,30 @@
+Q2D7: https://leetcode.com/problems/3sum/
+
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        vector<vector<int>> res;
+        sort(nums.begin(),nums.end());
+        
+        //moving a
+        for(int i=0;i<(int)nums.size()-2;i++){
+            if(i==0 || (i>0 && nums[i] != nums[i-1])){  //avoiding duplicates 
+                int lo = i+1 , hi = (int)nums.size()-1 ,sum = 0-nums[i]; //b+c=-a
+                while(lo<hi){
+                    if(nums[lo] + nums[hi] == sum){  //checking b+c==-a
+                        vector<int> temp;
+                        temp.push_back(nums[i]);
+                        temp.push_back(nums[lo]);
+                        temp.push_back(nums[hi]);
+                        res.push_back(temp);
+                        
+                        while(lo<hi && nums[lo]==nums[lo+1]) lo++; //skipping same values
+                        while(lo<hi && nums[hi]==nums[hi-1]) hi--;
+                        
+                        lo++;hi--;
+                    }
+                    else if(nums[lo] + nums[hi] < sum) lo++;
+                    else hi--;
+                }
+            }
+        }
+        return res;
+    }

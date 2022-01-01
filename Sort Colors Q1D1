@@ -1,4 +1,6 @@
- void sortColors(vector<int>& nums) {
+Q1 DAY1: https://leetcode.com/problems/sort-colors/
+
+void sortColors(vector<int>& nums) {
        int lo = 0; 
         int hi = nums.size() - 1; 
         int mid = 0; 

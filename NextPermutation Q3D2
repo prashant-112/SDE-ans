@@ -1,0 +1,19 @@
+Q3D2: https://leetcode.com/problems/next-permutation/
+
+    void nextPermutation(vector<int>& nums) {
+        int i,j;
+        for(i=nums.size()-2;i>=0;i--){ //traversing backward to find the breakpoint if increasin order of no. backward
+            if(nums[i]<nums[i+1]){
+                break;
+            }
+        }
+        if(i<0){ //if we didnt get any breakpoint just reverse the array to get the next permutation
+            reverse(nums.begin(),nums.end());
+        }else{ //if we get a breakpoint then again traverse back through array to find just one number which is greater than the breakpoint. then swap
+        for(j=nums.size()-1;j>=i;j--){
+            if(nums[i]<nums[j]) break;   
+        }
+        swap(nums[i],nums[j]);
+        reverse(nums.begin()+i+1,nums.end());
+    }
+    }

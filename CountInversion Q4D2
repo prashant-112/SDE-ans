@@ -1,0 +1,15 @@
+Q4D2: https://practice.geeksforgeeks.org/problems/inversion-of-array-1587115620/1
+
+    long long int inversionCount(long long arr[], long long N)
+    {
+        int CountInversion=0; 
+        int gap = ceil(N/2);
+        int i=0;
+        while(gap<N && i<N){
+            if(arr[i]>arr[gap]){
+                CountInversion++;
+            }
+            gap++;
+            i++;
+        }
+    }

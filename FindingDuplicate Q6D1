@@ -1,0 +1,18 @@
+Q6D1: Find the duplicate in an array of N+1 integers 
+https://leetcode.com/problems/find-the-duplicate-number/solution/
+
+    int findDuplicate(vector<int>& nums) {
+        int slow = nums[0];
+        int fast = nums[0];
+        
+        do{ // fast moves 2x faster than slow
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        }while(slow!=fast);   // when fast & slow collide
+            fast = nums[0]; // set fast to 1st element 
+        while(slow!=fast){  // then in this loop fast & slow move with same speed
+            slow = nums[slow];
+            fast = nums[fast]; // the point where they collide again is the duplicate no.
+        }
+        return fast;
+    }

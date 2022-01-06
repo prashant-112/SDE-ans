@@ -1,23 +1,45 @@
-vector<int> find_missing_repeating(vector<int> array)
-{
-    int n = array.size() + 1;
+// { Driver Code Starts
+#include <bits/stdc++.h>
 
-    vector<int> substitute(n, 0); // initializing the substitute array with 0 of size n+1.
+using namespace std;
 
-    vector<int> ans;              // initializing the answer  array .
-
-    for (int i = 0; i < array.size(); i++)
-    {
-        substitute[array[i]]++;
-    }
-
-    for (int i = 1; i <= array.size(); i++)
-    {
-        if (substitute[i] == 0 || substitute[i] > 1)
-        {
-            ans.push_back(i);
+ // } Driver Code Ends
+class Solution{
+public:
+    int *findTwoElement(int *arr, int n){
+        int *a =new int[2];
+        //using swap sort
+        int i=0;
+        while(i<n){
+            while(arr[i]!=arr[arr[i]-1] && i<n)swap(arr[i],arr[arr[i]-1]);
+            
+            i++;
         }
+        for(int i=0;i<n;i++){
+            if(arr[i]!=i+1){
+                a[0]=arr[i];
+                a[1]=i+1;
+            }
+        }
+        return a;
     }
+};
 
-    return ans;
-}
+// { Driver Code Starts.
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        int a[n];
+        for (int i = 0; i < n; i++) {
+            cin >> a[i];
+        }
+        Solution ob;
+        auto ans = ob.findTwoElement(a, n);
+        cout << ans[0] << " " << ans[1] << "\n";
+    }
+    return 0;
+}  // } Driver Code Ends

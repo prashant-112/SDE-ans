@@ -11,5 +11,5 @@ Q1 D4: https://leetcode.com/problems/two-sum/
             }
             mp[nums[i]] = i;
         }
-        return ans;
+        return ans; //if our for loop dosent work then it ans will be a empty vector
     }
